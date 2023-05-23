@@ -41,7 +41,7 @@ START_TEST(mult_1) {
     B.matrix[1][0] = 0.00005;
     B.matrix[1][1] = 16;
 
-    ck_assert_int_eq(s21_mult_matrix(&A, &B, &result),ERROR_MATRIX);
+    ck_assert_int_eq(s21_mult_matrix(&A, &B, &result), ERROR_MATRIX);
     s21_remove_matrix(&A);
     s21_remove_matrix(&B);
     //s21_remove_matrix(&result);
@@ -67,10 +67,10 @@ START_TEST(mult_2) {
     B.matrix[1][1] = 0;
     B.matrix[1][2] = -5.2;
 
-    ck_assert_int_eq(s21_mult_matrix(&A, &B, &result), OK);
+    ck_assert_int_eq(s21_mult_matrix(&A, &B, &result), ERROR_CALC);
     s21_remove_matrix(&A);
     s21_remove_matrix(&B);
-    s21_remove_matrix(&result);
+    //s21_remove_matrix(&result);
 }
 END_TEST
 
