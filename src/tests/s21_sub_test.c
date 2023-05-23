@@ -2,8 +2,8 @@
 #include "s21_tests.h"
 #include <check.h>
 
-// проверка успешной суммы
-START_TEST(sum_0) {
+// проверка успешной разности
+START_TEST(sub_0) {
     matrix_t A, B, result;
     s21_create_matrix(3, 3, &A);
     s21_create_matrix(3, 3, &B);
@@ -28,7 +28,7 @@ START_TEST(sum_0) {
     B.matrix[2][1] = -18;
     B.matrix[2][2] = 17;
 
-    ck_assert_int_eq(s21_sum_matrix(&A, &B, &result), OK);
+    ck_assert_int_eq(s21_sub_matrix(&A, &B, &result), OK);
     s21_remove_matrix(&A);
     s21_remove_matrix(&B);
     s21_remove_matrix(&result);
@@ -36,7 +36,7 @@ START_TEST(sum_0) {
 END_TEST
 
 // проверка ошибки матрицы
-START_TEST(sum_1) {
+START_TEST(sub_1) {
     matrix_t A, B, result;
     s21_create_matrix(2, 2, &A);
     s21_create_matrix(2, 2, &B);
@@ -47,14 +47,14 @@ START_TEST(sum_1) {
     B.matrix[1][0] = -3;
     B.matrix[1][1] = 3;
 
-    ck_assert_int_eq(s21_sum_matrix(&A, &B, &result), ERROR_MATRIX);
+    ck_assert_int_eq(s21_sub_matrix(&A, &B, &result), ERROR_MATRIX);
     s21_remove_matrix(&A);
     s21_remove_matrix(&B);
     //s21_remove_matrix(&result);
 }
 
 // проверка ошибки вычислений
-START_TEST(sum_2) {
+START_TEST(sub_2) {
     matrix_t A, B, result;
     s21_create_matrix(2, 2, &A);
     s21_create_matrix(3, 3, &B);
@@ -75,21 +75,19 @@ START_TEST(sum_2) {
     B.matrix[2][1] = -18;
     B.matrix[2][2] = 17;
 
-    ck_assert_int_eq(s21_sum_matrix(&A, &B, &result), ERROR_CALC);
+    ck_assert_int_eq(s21_sub_matrix(&A, &B, &result), ERROR_CALC);
     s21_remove_matrix(&A);
     s21_remove_matrix(&B);
     s21_remove_matrix(&result);
 }
 
+Suite *suite_sub_matrix(void) {
+    Suite *s = suite_create("suite_sub_matrix");
+    TCase *tc = tcase_create("case_sub_matrix");
 
-
-Suite *suite_sum_matrix(void) {
-    Suite *s = suite_create("suite_sum_matrix");
-    TCase *tc = tcase_create("case_sum_matrix");
-
-    tcase_add_test(tc, sum_0);
-    tcase_add_test(tc, sum_1);
-    tcase_add_test(tc, sum_2);
+    tcase_add_test(tc, sub_0);
+    tcase_add_test(tc, sub_1);
+    tcase_add_test(tc, sub_2);
 
     suite_add_tcase(s, tc);
     return s;
