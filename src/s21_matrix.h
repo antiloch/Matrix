@@ -55,4 +55,17 @@ int s21_determinant(matrix_t *A, double *result);
 // обратная матрица
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
+// ----- дополнительные функции ----
+
+// проверка что матрица пустая
+// 0 - пустая
+// 1 - не пустая
+int s21_empty_matrix(matrix_t *A);
+
+// получить значение детерминанта
+double s21_get_det(matrix_t *A);
+
+// получить матрицу минора для элемента[r][c]
+void s21_minor_matrix(matrix_t *A, matrix_t *minor, int r, int c);
+
 #endif // S21_MATRIX_

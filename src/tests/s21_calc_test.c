@@ -4,8 +4,7 @@
 
 // проверка нахождения матрицы алг дополнений
 START_TEST(calc_0) {
-    matrix_t A;
-    double result = 0;
+    matrix_t A, result;
     s21_create_matrix(4, 4, &A);
 
     A.matrix[0][0] = 6;
@@ -27,13 +26,13 @@ START_TEST(calc_0) {
     
     ck_assert_int_eq(s21_calc_complements(&A, &result), OK);
     s21_remove_matrix(&A);
+    s21_remove_matrix(&result);
 }
 END_TEST
 
 // проверка ошибки матрицы
 START_TEST(calc_1) {
     matrix_t A, result;
-    double result = 0;
 
     s21_create_matrix(3, 3, &A);
     
@@ -45,8 +44,7 @@ START_TEST(calc_1) {
 
 // проверка ошибки вычислений
 START_TEST(calc_2) {
-    matrix_t A;
-    double result = 0;
+    matrix_t A, result;
     s21_create_matrix(3, 4, &A);
 
     A.matrix[0][0] = 1;

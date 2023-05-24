@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-/*
 int s21_determinant(matrix_t *A, double *result) {
     int flag = OK;
-    double det = 0.0;
     if (s21_empty_matrix(A) == 1) {
         if (A -> rows == A -> columns) {
-            result = s21_create_matrix(A -> rows, A -> columns, result);
+            *result = s21_get_det(A);
         } else {
             flag = ERROR_CALC;
         }
@@ -17,7 +15,7 @@ int s21_determinant(matrix_t *A, double *result) {
     }
     return flag;
 }
-*/
+
 
 double s21_get_det(matrix_t *A) {
     double det = 0.0;
