@@ -34,9 +34,7 @@ END_TEST
 START_TEST(calc_1) {
     matrix_t A, result;
 
-    s21_create_matrix(3, 3, &A);
-    
-    A.matrix = NULL;
+    s21_create_matrix(-3, -3, &A);
 
     ck_assert_int_eq(s21_calc_complements(&A, &result), ERROR_MATRIX);
     s21_remove_matrix(&A);

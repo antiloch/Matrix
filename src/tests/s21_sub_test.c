@@ -38,10 +38,9 @@ END_TEST
 // проверка ошибки матрицы
 START_TEST(sub_1) {
     matrix_t A, B, result;
-    s21_create_matrix(2, 2, &A);
+    s21_create_matrix(-2, -2, &A);
     s21_create_matrix(2, 2, &B);
     
-    A.matrix = NULL;
     B.matrix[0][0] = 9;
     B.matrix[0][1] = -2;
     B.matrix[1][0] = -3;

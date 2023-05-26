@@ -7,7 +7,8 @@
 // 1 - не пустая
 int s21_empty_matrix(matrix_t *A) {
     int flag = SUCCESS;
-    if (A -> rows == 0 || A -> columns == 0 || A -> matrix == NULL) {
+    if (A -> rows <= 0 || A -> columns <= 0 || 
+    A -> matrix == NULL || A == NULL) {
         flag = FAILURE;
     }
     return flag;

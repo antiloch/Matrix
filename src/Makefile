@@ -53,3 +53,6 @@ style:
 	@clang-format -i tests/*.c tests/*.h
 	@mv .clang-format ../materials/linters
 	@echo "\033[1;42m DONE \033[0m"
+
+leaks:
+	@leaks -atExit -- ./test

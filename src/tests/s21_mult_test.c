@@ -32,10 +32,9 @@ END_TEST
 // проверка ошибки матрицы
 START_TEST(mult_1) {
     matrix_t A, B, result;
-    s21_create_matrix(2, 2, &A);
+    s21_create_matrix(-2, -2, &A);
     s21_create_matrix(2, 2, &B);
     
-    A.matrix = NULL;
     B.matrix[0][0] = 2.25;
     B.matrix[0][1] = -11.04;
     B.matrix[1][0] = 0.00005;

@@ -23,9 +23,7 @@ END_TEST
 // проверка ошибки матрицы
 START_TEST(transpose_1) {
     matrix_t A, result;
-    s21_create_matrix(3, 4, &A);
-    
-    A.matrix = NULL;
+    s21_create_matrix(-3, 4, &A);
 
     ck_assert_int_eq(s21_transpose(&A, &result), ERROR_MATRIX);
     s21_remove_matrix(&A);

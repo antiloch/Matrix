@@ -30,14 +30,25 @@ START_TEST(determinant_0) {
 }
 END_TEST
 
+//проверка детерминанта единичной матрицы
+START_TEST(determinant_0_1) {
+    matrix_t A;
+    double result = 0;
+    s21_create_matrix(1, 1, &A);
+
+    A.matrix[0][0] = 6;
+    
+    ck_assert_int_eq(s21_determinant(&A, &result), OK);
+    s21_remove_matrix(&A);
+}
+END_TEST
+
+
 // проверка ошибки матрицы
 START_TEST(determinant_1) {
     matrix_t A;
     double result = 0;
-
-    s21_create_matrix(3, 3, &A);
-    
-    A.matrix = NULL;
+    s21_create_matrix(-2, -2, &A);
 
     ck_assert_int_eq(s21_determinant(&A, &result), ERROR_MATRIX);
     s21_remove_matrix(&A);
@@ -71,6 +82,7 @@ Suite *suite_determinant(void) {
     TCase *tc = tcase_create("case_determinant");
 
     tcase_add_test(tc, determinant_0);
+    tcase_add_test(tc, determinant_0_1);
     tcase_add_test(tc, determinant_1);
     tcase_add_test(tc, determinant_2);
 

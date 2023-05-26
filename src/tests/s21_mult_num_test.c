@@ -26,9 +26,7 @@ END_TEST
 // проверка ошибки матрицы
 START_TEST(mult_num_1) {
     matrix_t A, result;
-    s21_create_matrix(2, 2, &A);
-    
-    A.matrix = NULL;
+    s21_create_matrix(-2, -2, &A);
 
     ck_assert_int_eq(s21_mult_number(&A, 4.000001, &result), ERROR_MATRIX);
     s21_remove_matrix(&A);
