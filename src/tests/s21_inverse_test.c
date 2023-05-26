@@ -30,6 +30,17 @@
 // }
 // END_TEST
 
+// проверка единичной матрицы
+// START_TEST(inverse_0_1) {
+//     matrix_t A, result;
+
+//     s21_create_matrix(1, 1, &A);
+//     A.matrix[0][0] = 5;
+
+//     ck_assert_int_eq(s21_inverse_matrix(&A, &result), OK);
+//     s21_remove_matrix(&A);
+// }
+
 // проверка ошибки матрицы
 // START_TEST(inverse_1) {
 //     matrix_t A, result;
@@ -67,6 +78,7 @@ Suite *suite_inverse_matrix(void) {
     TCase *tc = tcase_create("case_inverse_matrix");
 
     // tcase_add_test(tc, inverse_0);
+    // tcase_add_test(tc, inverse_0_1);
     // tcase_add_test(tc, inverse_1);
     tcase_add_test(tc, inverse_2);
 

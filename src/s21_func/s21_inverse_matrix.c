@@ -1,9 +1,10 @@
 #include "../s21_matrix.h"
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
 
 int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
-    int flag = OK;
+    int flag = ERROR_CALC;
     // матрица А не пустая
     if (s21_empty_matrix(A) == 1) {
         // случай единичной матрицы
@@ -21,24 +22,18 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
                 matrix_t calc_matrix;
                 flag = s21_calc_complements(A, &calc_matrix);
                 // проверяем, что действие успешно
-                if (flag == 0) {
+                 if (flag == OK) {
                     // транспонируем матрицу алгебраических дополнений
                     matrix_t trans_matrix;
                     flag = s21_transpose(&calc_matrix, &trans_matrix);
-                    if (flag == 0) {
+                    if (flag == OK) {
                     // умножаем трансп. матрицу алг. дополнений на обратный детерминант
                         s21_mult_number(&trans_matrix, det, result);
-                        // очищаем все созданные ранее матрицы
-                    } else {
-                        flag = ERROR_CALC;
                     }
+                    // // очищаем все созданные ранее матрицы
                     s21_remove_matrix(&trans_matrix);
-                } else {
-                    flag = ERROR_CALC;
                 }
                 s21_remove_matrix(&calc_matrix);
-            } else {
-                flag = ERROR_CALC;
             }
         }
     } else {
