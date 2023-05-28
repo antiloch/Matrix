@@ -12,9 +12,9 @@
 
 // структура матрицы
 typedef struct matrix_struct {
-    double** matrix;
-    int rows;
-    int columns;
+  double **matrix;
+  int rows;
+  int columns;
 } matrix_t;
 
 /*
@@ -68,4 +68,4 @@ double s21_get_det(matrix_t *A);
 // получить матрицу минора для элемента[r][c]
 void s21_minor_matrix(matrix_t *A, matrix_t *minor, int r, int c);
 
-#endif // S21_MATRIX_
+#endif  // S21_MATRIX_

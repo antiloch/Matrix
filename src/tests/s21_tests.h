@@ -16,4 +16,4 @@ Suite *suite_calc_complements(void);
 Suite *suite_determinant(void);
 Suite *suite_inverse_matrix(void);
 
-#endif //S21_TESTS_
+#endif  // S21_TESTS_

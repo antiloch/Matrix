@@ -46,12 +46,11 @@ clean:
 
 style: 
 	@echo "\033[1;34mStyling\033[0m"
-	@mv ../materials/linters/.clang-format ./
-	@clang-format -i *.c
+	@cp ../materials/linters/.clang-format ./
 	@clang-format -i *.h
 	@clang-format -i s21_func/*.c
 	@clang-format -i tests/*.c tests/*.h
-	@mv .clang-format ../materials/linters
+	@rm .clang-format
 	@echo "\033[1;42m DONE \033[0m"
 
 leaks:

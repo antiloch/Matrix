@@ -1,13 +1,14 @@
 #include "s21_tests.h"
+
 #include <stdio.h>
 
 int main(void) {
   int failed = 0;
-  Suite *s21_matrix_test[] = {
-      suite_create_matrix(), suite_sum_matrix(), suite_eq_matrix(),
-      suite_sub_matrix(), suite_mult_num(), suite_mult_matrix(),
-      suite_transpose(), suite_calc_complements(),
-      suite_determinant(), suite_inverse_matrix() };
+  Suite *s21_matrix_test[] = {suite_create_matrix(), suite_sum_matrix(),
+                              suite_eq_matrix(),     suite_sub_matrix(),
+                              suite_mult_num(),      suite_mult_matrix(),
+                              suite_transpose(),     suite_calc_complements(),
+                              suite_determinant(),   suite_inverse_matrix()};
 
   for (int i = 0; s21_matrix_test[i] != NULL; i++) {
     SRunner *sr = srunner_create(s21_matrix_test[i]);
