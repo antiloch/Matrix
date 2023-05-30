@@ -68,4 +68,7 @@ double s21_get_det(matrix_t *A);
 // получить матрицу минора для элемента[r][c]
 void s21_minor_matrix(matrix_t *A, matrix_t *minor, int r, int c);
 
+//вывод матрицы на экран
+void s21_print_matrix(matrix_t *A);
+
 #endif  // S21_MATRIX_

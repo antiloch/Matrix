@@ -30,14 +30,12 @@ double s21_get_det(matrix_t *A) {
         if ((i + j) < (i * 2)) {
           if (A->matrix[i][j] != 0) {
             // коэффициент, на который будем умножать строку
-            // т.к. арифм операции совершаем только с первой строкой, значение i
-            // фиксировано 0
-            double coef = A->matrix[i][j] / A->matrix[0][j];
+            // арифм операции совершаем с предыдущей строкой
+            double coef = A->matrix[i][j] / A->matrix[j][j];
             // умножаем первую строку на коэффициент
             for (int k = 0; k < A->columns; k++) {
-              A->matrix[0][k] = A->matrix[0][k] * coef;
               // вычитаем из строки строку с коэффициентом
-              A->matrix[i][k] -= A->matrix[0][k];
+              A->matrix[i][k] -= A->matrix[j][k] * coef;
             }
           }
         }

@@ -49,6 +49,54 @@ START_TEST(inverse_0_1) {
   s21_remove_matrix(&result);
 }
 
+//сложная обратная матрица
+START_TEST(inverse_0_2) {
+    matrix_t A, check, result;
+    s21_create_matrix(4, 4, &A);
+    s21_create_matrix(4, 4, &check);
+
+    A.matrix[0][0] = 6;
+    A.matrix[0][1] = 2;
+    A.matrix[0][2] = 2.03;
+    A.matrix[0][3] = 9.99;
+    A.matrix[1][0] = 1;
+    A.matrix[1][1] = -3;
+    A.matrix[1][2] = -90;
+    A.matrix[1][3] = 7;
+    A.matrix[2][0] = 12;
+    A.matrix[2][1] = -6;
+    A.matrix[2][2] = 2.25;
+    A.matrix[2][3] = 13.098;
+    A.matrix[3][0] = -1;
+    A.matrix[3][1] = 0;
+    A.matrix[3][2] = 24.242424;
+    A.matrix[3][3] = -18;
+
+    check.matrix[0][0] = 0.13;
+    check.matrix[0][1] = 0.031;
+    check.matrix[0][2] = 0.026;
+    check.matrix[0][3] = 0.1;
+    check.matrix[1][0] = 0.21;
+    check.matrix[1][1] = 0.015;
+    check.matrix[1][2] = -0.1;
+    check.matrix[1][3] = 0.049;
+    check.matrix[2][0] = -0.00696;
+    check.matrix[2][1] = -0.013;
+    check.matrix[2][2] = 0.00405;
+    check.matrix[2][3] = -0.00587;
+    check.matrix[3][0] = -0.016;
+    check.matrix[3][1] = -0.019;
+    check.matrix[3][2] = 0.00399;
+    check.matrix[3][3] = -0.069;
+    
+    ck_assert_int_eq(s21_inverse_matrix(&A, &result), OK);
+    ck_assert_int_eq(s21_eq_matrix(&check, &result), SUCCESS);
+    s21_remove_matrix(&A);
+    s21_remove_matrix(&check);
+    s21_remove_matrix(&result);
+}
+END_TEST
+
 // проверка ошибки матрицы
 START_TEST(inverse_1) {
   matrix_t A, result;
@@ -87,6 +135,7 @@ Suite *suite_inverse_matrix(void) {
 
   tcase_add_test(tc, inverse_0);
   tcase_add_test(tc, inverse_0_1);
+  tcase_add_test(tc, inverse_0_2);
   tcase_add_test(tc, inverse_1);
   tcase_add_test(tc, inverse_2);
 

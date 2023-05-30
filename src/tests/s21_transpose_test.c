@@ -31,6 +31,23 @@ START_TEST(transpose_0) {
 }
 END_TEST
 
+//транспонирование единичной матрицы
+START_TEST(transpose_0_1) {
+  matrix_t A, result, check;
+  s21_create_matrix(1, 1, &A);
+  s21_create_matrix(1, 1, &check);
+
+  A.matrix[0][0] = 3.033333;
+  check.matrix[0][0] = 3.0333332;
+
+  ck_assert_int_eq(s21_transpose(&A, &result), OK);
+  ck_assert_int_eq(s21_eq_matrix(&check, &result), SUCCESS);
+  s21_remove_matrix(&A);
+  s21_remove_matrix(&check);
+  s21_remove_matrix(&result);
+}
+END_TEST
+
 // проверка ошибки матрицы
 START_TEST(transpose_1) {
   matrix_t A, result;
@@ -46,6 +63,7 @@ Suite *suite_transpose(void) {
   TCase *tc = tcase_create("case_transpose");
 
   tcase_add_test(tc, transpose_0);
+  tcase_add_test(tc, transpose_0_1);
   tcase_add_test(tc, transpose_1);
 
   suite_add_tcase(s, tc);
