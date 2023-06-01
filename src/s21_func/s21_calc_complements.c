@@ -40,7 +40,7 @@ void s21_minor_matrix(matrix_t *A, matrix_t *minor, int r, int c) {
           minor_c += 1;
         }
         // проверяем что строка в матрице минора дошла до конца
-        if (minor_c > (A->columns - 1)) {
+        if (minor_c == (A->columns - 1)) {
           minor_c = 0;
           minor_r += 1;
         }

@@ -15,11 +15,15 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
       result->matrix[0][0] = 1.0 / A->matrix[0][0];
     } else {
       if (A->rows == A->columns) {
-        double det = s21_get_det(A);
+        // копируем матрицу A в copy, чтобы не изменять значения A
+        matrix_t copy;
+        s21_copy_matrix(A, &copy);
+        double det = s21_get_det(&copy);
+        s21_remove_matrix(&copy);
         // детерминант не 0
         if (det != 0) {
           // получаем значение детерминанта 1/|A|
-          det = 1 / s21_get_det(A);
+          det = 1 / det;
           // строим матрицу алгебраических дополнений для А
           matrix_t calc_matrix;
           flag = s21_calc_complements(A, &calc_matrix);

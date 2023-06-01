@@ -40,7 +40,6 @@ START_TEST(sum_0) {
   check.matrix[2][1] = -18;
   check.matrix[2][2] = 20;
 
-
   ck_assert_int_eq(s21_sum_matrix(&A, &B, &result), OK);
   ck_assert_int_eq(s21_eq_matrix(&check, &result), SUCCESS);
   s21_remove_matrix(&A);
